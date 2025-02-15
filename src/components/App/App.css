@@ -1,0 +1,11 @@
+.page {
+  background-color: #f3f3fe;
+  font-family: "CabinetGrotesk-bold";
+  font-weight: 700;
+  /* Add the Figma font, and it will be applied everywhere since the page wraps the entire project */
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+}

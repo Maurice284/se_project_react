@@ -1,0 +1,25 @@
+/* @font-face {
+  src: url("../../assets/roboto-regular.woff") format("woff");
+  font-family: "Roboto";
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  font-family: Roboto, sans-serif;
+} */
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25%;
+}
+
+.card__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  gap: 20px;
+}
