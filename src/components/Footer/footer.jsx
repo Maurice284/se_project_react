@@ -7,5 +7,5 @@ function footer() {
     </footer>
   );
 }
-
+// updated
 export default footer;
