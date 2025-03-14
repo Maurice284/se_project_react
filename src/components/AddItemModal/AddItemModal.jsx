@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import React, { useState } from "react";
 
 export default function AddItemModal({
-  activeModal,
+  isOpen,
   onClose,
   onAddItemModalSubmit,
 }) {
@@ -38,7 +38,7 @@ export default function AddItemModal({
     <ModalWithForm
       title="New garment"
       buttonText="Add garment"
-      activeModal={activeModal}
+      isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
     >

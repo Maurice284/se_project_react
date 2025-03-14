@@ -1,0 +1,26 @@
+.clothes-section {
+}
+
+.clothes-section__button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.clothes-section__title {
+  margin: 0;
+}
+
+.clothes-section__add-new {
+  border: none;
+  color: grey;
+  margin: 0;
+}
+
+.clothes-section__items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  gap: 20px;
+}

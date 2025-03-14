@@ -76,10 +76,10 @@ function App() {
 
   return (
     <div className="page">
-      <Header handleAddClick={handleAddClick} weatherData={weatherData} />
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
+        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <div className="page__content">
           <Routes>
             {" "}
@@ -96,15 +96,21 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
             />
           </Routes>
         </div>
         <AddItemModal
-          activeModal={activeModal === "add-garment"}
+          isOpen={activeModal === "add-garment"} // true
           onClose={closeActiveModal}
           onAddItemModalSubmit={handleAddItemModalSubmit}
         />
+
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}

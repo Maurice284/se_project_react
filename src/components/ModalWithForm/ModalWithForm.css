@@ -49,11 +49,17 @@
   position: relative;
   padding: 28px 28px 36px;
   max-width: 496px;
-  height: 436px;
+
   box-sizing: border-box;
   width: 100%;
   border-radius: 10px;
   margin: auto;
+}
+
+.modal__content_type_image {
+  padding: 0;
+
+  overflow: hidden;
 }
 
 .modal__form {
@@ -108,4 +114,24 @@
   flex-direction: row;
   gap: 10px;
   align-items: center;
+}
+
+.modal__image {
+}
+
+.modal__caption {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.modal__close {
+  color: black;
+}
+
+.modal__weather {
+  padding: 20px;
+}
+
+.modal__footer {
+  margin: 0;
 }
