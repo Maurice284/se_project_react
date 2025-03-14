@@ -1,6 +1,6 @@
-import "./footer.css";
+import "./Footer.css";
 
-function footer() {
+function Footer() {
   return (
     <footer class="footer">
       <p>Developed by Name Surname 2022</p>
@@ -8,4 +8,4 @@ function footer() {
   );
 }
 
-export default footer;
+export default Footer;

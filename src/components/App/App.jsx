@@ -13,7 +13,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
 import { getItems } from "../../utils/api";
-// import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -104,6 +104,7 @@ function App() {
               }
             />
           </Routes>
+          <Footer />
         </div>
         <AddItemModal
           isOpen={activeModal === "add-garment"} // true
