@@ -47,3 +47,4 @@ function Header({ handleAddClick, weatherData }) {
 }
 
 export default Header;
+//Header
