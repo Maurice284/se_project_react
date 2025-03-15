@@ -1,7 +1,7 @@
 import "./WeatherCard.css";
 import clear from "../../assets/day/clear.svg";
 import { weatherOptions, defaultWeatherOptions } from "../../utils/constants";
-import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../utils/CurrentTemperatureUnitContext";
 import React, { useContext } from "react";
 
 const WeatherCard = ({ weatherData }) => {
