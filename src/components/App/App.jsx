@@ -13,7 +13,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
 import { addItem, getItems, deleteItem } from "../../utils/api";
-import Footer from "../Footer/Footer";
+import Footer from "../Footer/Footer1";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
