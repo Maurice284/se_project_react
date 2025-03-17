@@ -12,7 +12,7 @@ import CurrentTemperatureUnitContext from "../../utils/CurrentTemperatureUnitCon
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
-import { getItems } from "../../utils/api";
+import { addItem, getItems, deleteItem } from "../../utils/api";
 import Footer from "../Footer/Footer";
 
 function App() {
@@ -27,6 +27,17 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  const handleDelete = () => {
+    deleteItem(selectedCard._id).then(() => {
+      setClothingItems((prevItems) => {
+        return prevItems.filter((item) => {
+          return item._id === selectedCard._id ? false : true;
+        });
+      });
+      closeActiveModal();
+    });
+  };
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -49,12 +60,14 @@ function App() {
     // const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
     // update clothingItem array
     // close the modal
-    setClothingItems((prevItems) => [
-      { name, link: imageUrl, weather, _id: newId },
-      ...prevItems,
-    ]);
-
-    closeActiveModal();
+    addItem({ imageUrl, name, weather }).then((data) => {
+      console.log(data);
+      setClothingItems((prevItems) => [
+        { name, imageUrl: imageUrl, weather, _id: data._id },
+        ...prevItems,
+      ]);
+      closeActiveModal();
+    });
   };
 
   useEffect(() => {
@@ -100,6 +113,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -113,6 +127,7 @@ function App() {
         />
 
         <ItemModal
+          onDelete={handleDelete}
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}

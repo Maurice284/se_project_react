@@ -66,7 +66,6 @@ export default function AddItemModal({
           placeholder="Image URL"
           required
           minLength="1"
-          maxLength="30"
           onChange={handleImageUrlChange}
           value={imageUrl}
         />

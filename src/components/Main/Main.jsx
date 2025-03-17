@@ -13,7 +13,11 @@ const Main = ({ weatherData, handleCardClick, clothingItems }) => {
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="card__text">
-          Today is {weatherData.temp?.F} &deg; F / You may want to wear:
+          Today is{" "}
+          {currentTemperatureUnit === "F"
+            ? weatherData.temp.F
+            : weatherData.temp.C}{" "}
+          &deg; {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="card__list">
           {clothingItems
