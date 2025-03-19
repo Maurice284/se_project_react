@@ -1,4 +1,3 @@
-import "./ItemModal.css";
 function ItemModal({ activeModal, onClose, card, onDelete }) {
   return (
     <div
@@ -11,7 +10,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
           className="modal__close"
         ></button>
 
-        <img src={card.imageUrl} alt="" className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
           <div className="modal__footer-column">
             <h2 className="modal__caption">{card.name}</h2>

@@ -129,6 +129,10 @@
 }
 
 .modal__image {
+  width: 498px;
+  height: 610px;
+  top: 106px;
+  left: 471px;
 }
 
 .modal__caption {

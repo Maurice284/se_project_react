@@ -23,20 +23,22 @@ function App() {
     isDay: false,
   });
 
-  const [clothingItems, setClothingItems] = useState([defaultClothingItems]);
+  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleDelete = () => {
-    deleteItem(selectedCard._id).then(() => {
-      setClothingItems((prevItems) => {
-        return prevItems.filter((item) => {
-          return item._id === selectedCard._id ? false : true;
+    deleteItem(selectedCard._id)
+      .then(() => {
+        setClothingItems((prevItems) => {
+          return prevItems.filter((item) => {
+            return item._id === selectedCard._id ? false : true;
+          });
         });
-      });
-      closeActiveModal();
-    });
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   const handleToggleSwitchChange = () => {
@@ -60,14 +62,18 @@ function App() {
     // const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
     // update clothingItem array
     // close the modal
-    addItem({ imageUrl, name, weather }).then((data) => {
-      console.log(data);
-      setClothingItems((prevItems) => [
-        { name, imageUrl: imageUrl, weather, _id: data._id },
-        ...prevItems,
-      ]);
-      closeActiveModal();
-    });
+    return addItem({ imageUrl, name, weather })
+      .then((data) => {
+        console.log(data);
+        setClothingItems((prevItems) => [
+          { name, imageUrl: imageUrl, weather, _id: data._id },
+          ...prevItems,
+        ]);
+        closeActiveModal();
+      })
+      .catch((error) => {
+        console.error("Error from addItem:", error);
+      });
   };
 
   useEffect(() => {

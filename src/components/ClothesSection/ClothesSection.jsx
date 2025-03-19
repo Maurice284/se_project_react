@@ -3,6 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
 function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
+  console.log(clothingItems);
   return (
     <section className="clothes-section">
       <div className="clothes-section__button-container">
@@ -14,14 +15,17 @@ function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
       <ul className="clothes-section__items">
         {clothingItems
           // .filter((card) => card.weather === weatherData.type)
-          .map((filteredCard) => (
-            <ItemCard
-              key={filteredCard._id} //item.id
-              item={filteredCard}
-              // Todo pass as prop
-              onCardClick={onCardClick}
-            />
-          ))}
+          .map((filteredCard) => {
+            console.log("id should exist:", filteredCard._id);
+            return (
+              <ItemCard
+                key={filteredCard._id} //item.id
+                item={filteredCard}
+                // Todo pass as prop
+                onCardClick={onCardClick}
+              />
+            );
+          })}
       </ul>
     </section>
   );
