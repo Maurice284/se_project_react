@@ -1,6 +1,6 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "../../utils/useForm";
 
 export default function AddItemModal({
@@ -24,12 +24,14 @@ export default function AddItemModal({
   //   setWeather(e.target.value);
   // };
 
+  useEffect(() => {
+    setValues({ name: "", imageUrl: "", weather: "" });
+  }, [isOpen]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onAddItemModalSubmit(values).then(() => {
-      setValues({ name: "", imageUrl: "", weather: "" });
-    });
+    onAddItemModalSubmit(values);
   };
 
   const { values, handleChange, setValues } = useForm({
@@ -97,7 +99,7 @@ export default function AddItemModal({
         </div>
         <div>
           <label
-            htmlFor="warm"
+            htmlFor="choiceWarm"
             className="modal__label modal__label_type_radio"
           >
             <input
@@ -114,7 +116,7 @@ export default function AddItemModal({
 
         <div>
           <label
-            htmlFor="cold"
+            htmlFor="choiceCold"
             className="modal__label modal__label_type_radio"
           >
             <input
