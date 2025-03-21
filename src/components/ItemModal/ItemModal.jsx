@@ -1,4 +1,9 @@
-function ItemModal({ activeModal, onClose, card, onDelete }) {
+function ItemModal({
+  activeModal,
+  onClose,
+  card /*onDelete*/ /*open confirm modal*/,
+  openConfirmationModal,
+}) {
   return (
     <div
       className={`modal ${activeModal === "preview" ? "modal__opened" : ""}`}
@@ -17,9 +22,10 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
           <button
-            onClick={onDelete}
+            /* onClick= pass open confirm*/
             type="button"
             className="modal__delete-button"
+            onClick={openConfirmationModal}
           >
             Delete Item
           </button>

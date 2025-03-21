@@ -14,6 +14,7 @@ import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
 import { addItem, getItems, deleteItem } from "../../utils/api";
 import Footer from "../Footer/Footer";
+import ModalConfirm from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -28,7 +29,12 @@ function App() {
   const [selectedCard, setSelectCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
+  const openConfirmationModal = () => {
+    setActiveModal("confirm");
+  };
+
   const handleDelete = () => {
+    /*api.*/
     deleteItem(selectedCard._id)
       .then(() => {
         setClothingItems((prevItems) => {
@@ -57,6 +63,10 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
   };
+
+  ////////
+  //create open confirmation modal here
+  //////
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     // const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
@@ -133,10 +143,17 @@ function App() {
         />
 
         <ItemModal
-          onDelete={handleDelete}
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          openConfirmationModal={openConfirmationModal}
+          /*confimationmodal */
+        />
+
+        <ModalConfirm
+          isOpen={activeModal === "confirm"}
+          onClose={closeActiveModal}
+          onDelete={handleDelete}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
