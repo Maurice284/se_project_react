@@ -1,13 +1,17 @@
+import "../ModalWithForm/ModalWithForm.css";
+
 function ItemModal({
-  activeModal,
+  isOpen,
   onClose,
   card /*onDelete*/ /*open confirm modal*/,
   openConfirmationModal,
 }) {
+  const handleDeleteClick = () => {
+    openConfirmationModal(card);
+  };
+
   return (
-    <div
-      className={`modal ${activeModal === "preview" ? "modal__opened" : ""}`}
-    >
+    <div className={`modal modal_type_image ${isOpen ? "modal__opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
         <button
           onClick={onClose}
@@ -25,7 +29,7 @@ function ItemModal({
             /* onClick= pass open confirm*/
             type="button"
             className="modal__delete-button"
-            onClick={openConfirmationModal}
+            onClick={handleDeleteClick}
           >
             Delete Item
           </button>

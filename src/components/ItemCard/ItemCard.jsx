@@ -1,7 +1,7 @@
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick }) {
-  const handleCardClick = () => {
+  const handleClick = () => {
     onCardClick(item);
   };
 
@@ -9,7 +9,7 @@ function ItemCard({ item, onCardClick }) {
     <div className="card">
       <h2 className="card__name">{item.name}</h2>
       <img
-        onClick={handleCardClick}
+        onClick={handleClick}
         className="card__image"
         src={item.imageUrl}
         alt={item.name}
