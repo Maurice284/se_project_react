@@ -1,14 +1,20 @@
 import "../ModalWithForm/ModalWithForm.css";
+//import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ItemModal({
   isOpen,
   onClose,
   card /*onDelete*/ /*open confirm modal*/,
   openConfirmationModal,
+  currentUser,
 }) {
   const handleDeleteClick = () => {
     openConfirmationModal(card);
   };
+
+  const { handleLogout } = useContext(CurrentUserContext);
 
   return (
     <div className={`modal modal_type_image ${isOpen ? "modal__opened" : ""}`}>
@@ -25,14 +31,24 @@ function ItemModal({
             <h2 className="modal__caption">{card.name}</h2>
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
-          <button
-            /* onClick= pass open confirm*/
-            type="button"
-            className="modal__delete-button"
-            onClick={handleDeleteClick}
-          >
-            Delete Item
-          </button>
+          {currentUser._id === card.owner && (
+            <div>
+              <button
+                type="button"
+                className="modal__delete-button"
+                onClick={handleDeleteClick}
+              >
+                Delete Item
+              </button>
+              <button
+                type="button"
+                className="modal__logout-button"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

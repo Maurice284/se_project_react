@@ -16,7 +16,7 @@ function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
         {clothingItems
           // .filter((card) => card.weather === weatherData.type)
           .map((filteredCard) => {
-            console.log("id should exist:", filteredCard._id);
+            // console.log("id should exist:", filteredCard._id);
             return (
               <ItemCard
                 key={filteredCard._id} //item.id

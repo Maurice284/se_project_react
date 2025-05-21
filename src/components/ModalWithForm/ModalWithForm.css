@@ -165,3 +165,18 @@
   border: none;
   background: transparent;
 }
+.modal__content_content_confirmation {
+  width: 670;
+  height: 280;
+  /* top: 271px; */
+  /* left: 385px; */
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+  margin: auto;
+}

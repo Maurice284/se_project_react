@@ -22,4 +22,20 @@
 .card__image {
   width: 100%;
   border-radius: 8%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__like-button {
+  background: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin-top: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.card__like-button_active {
+  background: black;
+  color: white;
 }
