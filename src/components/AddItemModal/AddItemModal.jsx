@@ -42,7 +42,7 @@ export default function AddItemModal({
 
   return (
     <ModalWithForm
-      name="New garment"
+      title="New garment"
       buttonText="Add garment"
       isOpen={isOpen}
       onClose={onClose}
@@ -60,7 +60,7 @@ export default function AddItemModal({
           minLength="1"
           maxLength="30"
           onChange={handleChange}
-          value={values.title}
+          value={values.name}
         />
       </label>
 
@@ -132,6 +132,9 @@ export default function AddItemModal({
           </label>
         </div>
       </fieldset>
+      <button type="submit" className="modal__submit">
+        Add garment
+      </button>
     </ModalWithForm>
   );
 }

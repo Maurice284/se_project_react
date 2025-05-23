@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, onClose, onSubmit }) => {
+const LoginModal = ({ isOpen, onClose, onSubmit, handleRegisterClick }) => {
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     email: "",
@@ -54,7 +54,21 @@ const LoginModal = ({ isOpen, onClose, onSubmit }) => {
           required
         />
       </label>
-      {error && <span className="modal__error">{error}</span>}
+
+      <div className="modal__button-container">
+        {error && <span className="modal__error">{error}</span>}
+        <button type="submit" className="modal__submit">
+          Login
+        </button>
+
+        <button
+          type="button"
+          className="modal__button"
+          onClick={handleRegisterClick}
+        >
+          or signup
+        </button>
+      </div>
     </ModalWithForm>
   );
 };

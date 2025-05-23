@@ -295,7 +295,7 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute loggedIn={isLoggedIn}>
                     <Profile
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
@@ -339,12 +339,14 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onSubmit={handleRegister}
+            handleLoginClick={handleLoginClick}
           />
 
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onSubmit={handleLogin}
+            handleRegisterClick={handleRegisterClick}
           />
         </CurrentTemperatureUnitContext.Provider>
       </CurrentUserContext.Provider>

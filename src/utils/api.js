@@ -11,7 +11,11 @@ function _checkResponse(res) {
 }
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
+  return fetch(`${baseUrl}/items`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
     return _checkResponse(res);
   });
 }

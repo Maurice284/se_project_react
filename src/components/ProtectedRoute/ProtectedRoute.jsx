@@ -3,7 +3,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ProtectedRoute({ children }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { isLoggedIn } = useContext(CurrentUserContext);
 
   // If user is not logged in, redirect to the home page
   if (!currentUser) {

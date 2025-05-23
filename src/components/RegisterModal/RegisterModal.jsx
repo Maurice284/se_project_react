@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
+const RegisterModal = ({ isOpen, onClose, onSubmit, handleLoginClick }) => {
   const [formData, setFormData] = useState({
     name: "",
     avatar: "",
@@ -26,6 +26,8 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText2={"or log in"}
+      has2ndButton={true}
     >
       <label className="modal__label">
         Name*
@@ -77,6 +79,20 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
           required
         />
       </label>
+
+      <div className="modal__button-container">
+        <button type="submit" className="modal__submit">
+          Next
+        </button>
+
+        <button
+          type="button"
+          className="modal__button"
+          onClick={handleLoginClick}
+        >
+          or log in
+        </button>
+      </div>
     </ModalWithForm>
   );
 };

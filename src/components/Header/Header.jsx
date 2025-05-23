@@ -36,13 +36,15 @@ function Header({
 
       <div className="header__container">
         <ToggleSwitch />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          +Add clothes
-        </button>
+        {isLoggedIn && (
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            +Add clothes
+          </button>
+        )}
         {isLoggedIn ? (
           <Link to="/profile" className="header__link">
             <div className="header__user-container">
