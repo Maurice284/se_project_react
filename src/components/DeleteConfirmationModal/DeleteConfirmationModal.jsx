@@ -12,14 +12,25 @@ function DeleteConfirmationModal({ isOpen, onClose, onDelete, card }) {
       }`}
     >
       <div className="modal__content modal__content_content_confirmation">
-        <button type="button" className="modal__close" onClick={onClose} />
+        <button
+          type="button"
+          className="modal__close modal__close_color_grey"
+          onClick={onClose}
+        />
 
         <h3 className="modal__confirmation-title">
           Are you sure you want to delete this item? This action is
           irreversible.
         </h3>
-        <button onClick={handleDeleteClick}>Yes, delete item</button>
-        <button onClick={onClose}>Cancel</button>
+        <button
+          className="modal__confirmation-delete"
+          onClick={handleDeleteClick}
+        >
+          Yes, delete item
+        </button>
+        <button className="modal__confirmation-cancel" onClick={onClose}>
+          Cancel
+        </button>
       </div>
     </div>
   );

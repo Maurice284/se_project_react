@@ -40,13 +40,6 @@ function ItemModal({
               >
                 Delete Item
               </button>
-              <button
-                type="button"
-                className="modal__logout-button"
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
             </div>
           )}
         </div>

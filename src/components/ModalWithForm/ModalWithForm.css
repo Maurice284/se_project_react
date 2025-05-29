@@ -29,6 +29,7 @@
   border: none;
   color: black;
   background-color: transparent;
+  cursor: pointer;
 }
 .modal__close-grey {
   position: absolute;
@@ -40,6 +41,7 @@
   border: none;
   color: #000000;
   background-color: transparent;
+  cursor: pointer;
 }
 .modal__submit {
   border: none;
@@ -52,7 +54,7 @@
   left: 500px;
   font-weight: 700;
   line-height: 20px;
-  /* margin-top: 32px; */
+  margin-top: 32px;
   border-radius: 5px;
 }
 
@@ -130,9 +132,10 @@
 
 .modal__image {
   width: 498px;
-  height: 610px;
-  top: 106px;
-  left: 471px;
+  height: 498px;
+  object-fit: cover;
+  /* top: 106px;
+  left: 471px; */
 }
 
 .modal__caption {
@@ -166,19 +169,47 @@
   background: transparent;
 }
 .modal__content_content_confirmation {
-  width: 670;
-  height: 280;
+  width: 670px;
+  height: 280px;
   /* top: 271px; */
   /* left: 385px; */
   background-color: #fff;
   position: relative;
-  padding: 28px 28px 36px;
+  padding: 60px 60px 60px;
   max-width: 496px;
-
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
   border-radius: 10px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__confirmation-delete {
+  border: none;
+  background: transparent;
+  padding: 0px;
+  color: #ff4d00;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.modal__confirmation-cancel {
+  margin-top: 26px;
+  border: none;
+  background: transparent;
+  padding: 0px;
+  line-height: 24px;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: solid;
+}
+
+.modal__confirmation-title {
+  text-align: center;
 }
 
 .modal__button-container {
@@ -222,4 +253,8 @@
   background-color: black;
   color: white;
   transform: scale(1.02); /* Slight grow effect */
+}
+.modal__close_color_grey {
+  background-image: url(../../assets/greyXbtn.svg);
+  background-repeat: no-repeat;
 }

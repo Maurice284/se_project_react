@@ -2,7 +2,12 @@ import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
+function ClothesSection({
+  onCardClick,
+  clothingItems,
+  handleAddClick,
+  onCardLike,
+}) {
   console.log(clothingItems);
   return (
     <section className="clothes-section">
@@ -22,6 +27,7 @@ function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
                 key={filteredCard._id} //item.id
                 item={filteredCard}
                 // Todo pass as prop
+                onCardLike={onCardLike}
                 onCardClick={onCardClick}
               />
             );

@@ -6,7 +6,7 @@ function ProtectedRoute({ children }) {
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   // If user is not logged in, redirect to the home page
-  if (!currentUser) {
+  if (!isLoggedIn) {
     return <Navigate to="/" replace />;
   }
 
