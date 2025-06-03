@@ -16,9 +16,7 @@ const LoginModal = ({ isOpen, onClose, onSubmit, handleRegisterClick }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(null); // Clear any previous errors
-    onSubmit(formData).catch((err) => {
-      setError("Invalid email or password");
-    });
+    onSubmit(formData);
   };
 
   return (

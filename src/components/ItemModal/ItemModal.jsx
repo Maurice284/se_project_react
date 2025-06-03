@@ -31,7 +31,7 @@ function ItemModal({
             <h2 className="modal__caption">{card.name}</h2>
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
-          {currentUser._id === card.owner && (
+          {currentUser?._id === card.owner && (
             <div>
               <button
                 type="button"

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "./constants";
 
 function _checkResponse(res) {
   if (res.ok) {
@@ -94,6 +94,7 @@ const api = {
   updateProfile,
   addCardLike,
   removeCardLike,
+  baseUrl,
 };
 
 export default api;

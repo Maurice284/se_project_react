@@ -1,9 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "./constants";
+import api from "./api.js";
 const TOKEN_KEY = "token";
-
-function _checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-}
 
 function signup({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {
@@ -13,7 +10,7 @@ function signup({ name, avatar, email, password }) {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   })
-    .then(_checkResponse)
+    .then(api._checkResponse)
     .then((data) => {
       localStorage.setItem("token", data.token);
       return data;
@@ -24,11 +21,12 @@ function signin({ email, password }) {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
   })
-    .then(_checkResponse)
+    .then(api._checkResponse)
     .then((data) => {
       localStorage.setItem("token", data.token);
       return data;

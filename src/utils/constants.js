@@ -120,4 +120,6 @@ export const coordinates = {
   longitude: -73.848717,
 };
 
+export const baseUrl = "http://localhost:3001";
+
 export const APIkey = "76c51f40b254aa0f2d084b4ad8cf47b1";

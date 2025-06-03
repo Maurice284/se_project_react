@@ -1,5 +1,4 @@
 import "../ModalWithForm/ModalWithForm";
-import "./DeleteConfirmationModal.css";
 
 function DeleteConfirmationModal({ isOpen, onClose, onDelete, card }) {
   const handleDeleteClick = () => {

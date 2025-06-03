@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -43,6 +43,7 @@ function App() {
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const CurrentUser = useContext(CurrentUserContext);
 
   const openConfirmationModal = (card) => {
     setCardToDelete(card);
@@ -125,7 +126,7 @@ function App() {
       .getItems()
       .then((data) => {
         console.log("Raw data from API:", data);
-        setClothingItems(data); // Update state with fetched items
+        setClothingItems(data.reverse()); // Update state with fetched items
       })
       .catch(console.error);
   }, []);
@@ -166,18 +167,19 @@ function App() {
     }
   };
 
-  const handleLogin = async ({ email, password }) => {
-    try {
-      const res = await auth.signin({ email, password });
-      if (res.token) {
-        localStorage.setItem("token", res.token);
-        setIsLoggedIn(true);
-        closeActiveModal();
-        await fetchUserInfo(res.token);
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-    }
+  const handleLogin = ({ email, password }) => {
+    auth
+      .signin({ email, password })
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("token", res.token);
+          setIsLoggedIn(true);
+          console.log("this is the loggen in person", isLoggedIn);
+          closeActiveModal();
+          fetchUserInfo(res.token);
+        }
+      })
+      .catch((err) => console.log("Login error:", err));
   };
 
   // Call the signin function from auth.js
@@ -268,15 +270,16 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <Header
-            handleAddClick={handleAddClick}
-            weatherData={weatherData}
-            handleRegisterClick={handleRegisterClick}
-            handleLoginClick={handleLoginClick}
-            isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
-          />
           <div className="page__content">
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              handleRegisterClick={handleRegisterClick}
+              handleLoginClick={handleLoginClick}
+              // isLoggedIn={isLoggedIn}
+              // currentUser={currentUser}
+            />
+
             <Routes>
               {" "}
               <Route
@@ -288,7 +291,6 @@ function App() {
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
-                    currentUser={currentUser}
                   />
                 }
               />
@@ -319,14 +321,12 @@ function App() {
             onClose={closeActiveModal}
             openConfirmationModal={openConfirmationModal}
             isOpen={activeModal === "preview"}
-            currentUser={currentUser}
           />
 
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}
             onClose={closeActiveModal}
             onSubmit={handleUpdateProfile}
-            currentUser={currentUser}
           />
 
           <DeleteConfirmationModal
