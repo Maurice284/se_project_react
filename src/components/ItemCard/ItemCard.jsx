@@ -3,7 +3,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
   const isLiked = item.likes
     ? item.likes.some((id) => id === currentUser?._id)
     : false;
@@ -26,7 +26,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     <div className="card">
       <div className="card__container">
         <h2 className="card__name">{item.name}</h2>
-        {currentUser && (
+        {isLoggedIn && (
           <button
             className={itemLikeButtonClassName}
             onClick={handleLike}

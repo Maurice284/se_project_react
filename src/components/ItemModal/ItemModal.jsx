@@ -8,7 +8,7 @@ function ItemModal({
   onClose,
   card /*onDelete*/ /*open confirm modal*/,
   openConfirmationModal,
-  currentUser,
+  currentUserId,
 }) {
   const handleDeleteClick = () => {
     openConfirmationModal(card);
@@ -31,7 +31,7 @@ function ItemModal({
             <h2 className="modal__caption">{card.name}</h2>
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
-          {currentUser?._id === card.owner && (
+          {currentUserId === card.owner && (
             <div>
               <button
                 type="button"

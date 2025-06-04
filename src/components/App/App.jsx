@@ -321,12 +321,14 @@ function App() {
             onClose={closeActiveModal}
             openConfirmationModal={openConfirmationModal}
             isOpen={activeModal === "preview"}
+            currentUserId={currentUser?._id}
           />
 
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}
             onClose={closeActiveModal}
             onSubmit={handleUpdateProfile}
+            currentUser={currentUser}
           />
 
           <DeleteConfirmationModal

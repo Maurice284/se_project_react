@@ -6,10 +6,15 @@ const EditProfileModal = ({ isOpen, onClose, onSubmit, currentUser }) => {
   const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
-    // Pre-fill the form with current user data
-    setName(currentUser?.name || "");
-    setAvatar(currentUser?.avatar || "");
-  }, [currentUser]);
+    if (isOpen && currentUser) {
+      // Pre-fill the form with current user data
+      setName(currentUser?.name || "");
+      setAvatar(currentUser?.avatar || "");
+    } else if (!currentUser) {
+      setName("");
+      setAvatar("");
+    }
+  }, [currentUser, isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

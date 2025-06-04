@@ -15,9 +15,6 @@ const Profile = ({
 
   return (
     <div className="profile">
-      <div className="profile__header">
-        <div className="profile__info"></div>
-      </div>
       <SideBar />
       <ClothesSection
         clothingItems={clothingItems.filter(

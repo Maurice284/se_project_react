@@ -167,6 +167,7 @@
   color: #ff4d00;
   border: none;
   background: transparent;
+  cursor: pointer;
 }
 .modal__content_content_confirmation {
   width: 670px;
