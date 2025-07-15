@@ -119,7 +119,9 @@ export const coordinates = {
   latitude: 40.89867,
   longitude: -73.848717,
 };
-
-export const baseUrl = "http://localhost:3001";
-
 export const APIkey = "76c51f40b254aa0f2d084b4ad8cf47b1";
+
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.WhatToWear247.jumpingcrab.com"
+    : "http://localhost:3001";

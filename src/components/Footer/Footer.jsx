@@ -3,7 +3,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>Developed by Name Surname 2022</p>
+      <p>Developed by Maurice M 2025</p>
     </footer>
   );
 };
